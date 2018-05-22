@@ -21,10 +21,10 @@
 		8259E9D320A395C60036D311 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8259E9D220A395C60036D311 /* Default-568h@2x.png */; };
 		8259E9D520A396520036D311 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8259E9D420A396520036D311 /* Timer.swift */; };
 		8259E9D720A3966D0036D311 /* Attendees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8259E9D620A3966D0036D311 /* Attendees.swift */; };
-		827E884020B0EB5F0036F9BC /* EXPLORE.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 827E883F20B0EB5F0036F9BC /* EXPLORE.storyboard */; };
 		827E884320B2BB700036F9BC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 827E884220B2BB700036F9BC /* MapKit.framework */; };
 		827E884520B2D6720036F9BC /* GoogleMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827E884420B2D6720036F9BC /* GoogleMapsViewController.swift */; };
 		827E884720B2D89C0036F9BC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 827E884620B2D89C0036F9BC /* CoreLocation.framework */; };
+		828137F620B4DE81004C1ED8 /* ExploreEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828137F520B4DE81004C1ED8 /* ExploreEventsTableViewController.swift */; };
 		82B67A4820A502B2003121E5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82B67A4720A502B2003121E5 /* Info.plist */; };
 		82DD2EEA20A374470002CB14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DD2EE920A374470002CB14 /* AppDelegate.swift */; };
 		82DD2EEC20A374470002CB14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DD2EEB20A374470002CB14 /* ViewController.swift */; };
@@ -55,11 +55,11 @@
 		8259E9D220A395C60036D311 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8259E9D420A396520036D311 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		8259E9D620A3966D0036D311 /* Attendees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attendees.swift; sourceTree = "<group>"; };
-		827E883F20B0EB5F0036F9BC /* EXPLORE.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EXPLORE.storyboard; sourceTree = "<group>"; };
 		827E884120B135B20036F9BC /* iHobby_Portfolio4.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iHobby_Portfolio4.entitlements; sourceTree = "<group>"; };
 		827E884220B2BB700036F9BC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		827E884420B2D6720036F9BC /* GoogleMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsViewController.swift; sourceTree = "<group>"; };
 		827E884620B2D89C0036F9BC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		828137F520B4DE81004C1ED8 /* ExploreEventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreEventsTableViewController.swift; sourceTree = "<group>"; };
 		82B67A4720A502B2003121E5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82DD2EE620A374470002CB14 /* iHobby_Portfolio4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iHobby_Portfolio4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DD2EE920A374470002CB14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,7 +117,6 @@
 		8259E9CF20A3954F0036D311 /* Storyboard References */ = {
 			isa = PBXGroup;
 			children = (
-				827E883F20B0EB5F0036F9BC /* EXPLORE.storyboard */,
 				822E73BC20AD173000B09652 /* CreateEvent.storyboard */,
 				82DD2EED20A374470002CB14 /* Main.storyboard */,
 			);
@@ -127,6 +126,7 @@
 		8259E9D020A395630036D311 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				828137F520B4DE81004C1ED8 /* ExploreEventsTableViewController.swift */,
 				827E884420B2D6720036F9BC /* GoogleMapsViewController.swift */,
 				822E73C520AD1B7B00B09652 /* EventCell.swift */,
 				82DD2EEB20A374470002CB14 /* ViewController.swift */,
@@ -262,7 +262,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				82DD2EF720A374480002CB14 /* LaunchScreen.storyboard in Resources */,
-				827E884020B0EB5F0036F9BC /* EXPLORE.storyboard in Resources */,
 				8259E9D320A395C60036D311 /* Default-568h@2x.png in Resources */,
 				82DD2EF420A374480002CB14 /* Assets.xcassets in Resources */,
 				822E73BD20AD173100B09652 /* CreateEvent.storyboard in Resources */,
@@ -371,6 +370,7 @@
 				8259E9D720A3966D0036D311 /* Attendees.swift in Sources */,
 				82E5E70F20A53B3600B859A8 /* ProfileViewController.swift in Sources */,
 				8259E9CD20A394BC0036D311 /* Map.swift in Sources */,
+				828137F620B4DE81004C1ED8 /* ExploreEventsTableViewController.swift in Sources */,
 				8259E9C120A37FD50036D311 /* Calendar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

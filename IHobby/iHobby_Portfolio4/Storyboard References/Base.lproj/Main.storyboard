@@ -425,14 +425,6 @@
             </objects>
             <point key="canvasLocation" x="1868" y="371"/>
         </scene>
-        <!--EXPLORE-->
-        <scene sceneID="V6U-OK-Leh">
-            <objects>
-                <viewControllerPlaceholder storyboardName="EXPLORE" id="UdD-Vv-rMD" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ccx-6u-Vvd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="145" y="156"/>
-        </scene>
         <!--Profile View Controller-->
         <scene sceneID="2a3-Ni-Wqn">
             <objects>
@@ -625,6 +617,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KAg-3b-Z4Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1100" y="-308.09595202398805"/>
+        </scene>
+        <!--Explore Events-->
+        <scene sceneID="IzZ-mR-tA0">
+            <objects>
+                <tableViewController id="lPi-MR-p6J" userLabel="Explore Events" customClass="ExploreEventsTableViewController" customModule="iHobby_Portfolio4" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BLW-Nt-qQ1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventCell1" rowHeight="620" id="XsI-eD-3eh">
+                                <rect key="frame" x="0.0" y="28" width="375" height="620"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XsI-eD-3eh" id="dOm-mI-0vT">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="619.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RKA-0v-znY">
+                                            <rect key="frame" x="10" y="5" width="144" height="98"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="lPi-MR-p6J" id="2aw-VH-BkF"/>
+                            <outlet property="delegate" destination="lPi-MR-p6J" id="3zT-dK-iFc"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qfz-FE-48Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-823" y="690"/>
         </scene>
     </scenes>
     <resources>
