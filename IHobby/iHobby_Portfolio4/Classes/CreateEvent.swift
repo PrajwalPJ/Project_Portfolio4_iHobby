@@ -1,0 +1,30 @@
+//
+//  CreateEvent.swift
+//  iHobby_Portfolio4
+//
+//  Created by Prajwal Ramamurthy on 5/16/18.
+//  Copyright © 2018 Prajwal Ramamurthy. All rights reserved.
+//
+
+import Foundation
+
+class CreateEvent{
+    var eventTitle: String?
+    var eventTime: String?
+    var eventLocation: String?
+    var eventDescription: String?
+    var eventDate: String?
+    var id : String?
+    
+    init(ieventTitle: String?, ieventTime: String?, ieventLocation: String?, ieventDescription: String?, ieventDate: String?, initId: String?) {
+        self.eventDate = ieventDate
+        self.eventTitle = ieventTitle
+        self.eventTime = ieventTime
+        self.eventLocation = ieventLocation
+        self.eventDescription = ieventDescription
+        self.id = initId
+        
+    }
+    
+    
+}

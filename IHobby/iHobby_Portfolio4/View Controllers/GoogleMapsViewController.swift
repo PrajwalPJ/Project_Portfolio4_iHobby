@@ -1,0 +1,64 @@
+//
+//  GoogleMapsViewController.swift
+//  iHobby_Portfolio4
+//
+//  Created by Prajwal Ramamurthy on 5/21/18.
+//  Copyright © 2018 Prajwal Ramamurthy. All rights reserved.
+//
+
+import UIKit
+import GoogleMaps
+import MapKit
+import CoreLocation
+
+class GoogleMapsViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate {
+
+   
+    @IBOutlet weak var map: MKMapView!
+    @IBAction func SearchButton(_ sender: Any) {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        present(searchController, animated: true, completion: nil)
+        
+        
+    }
+    // initialize location manager
+    let manager = CLLocationManager()
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        // get the most recent position of the user
+        let location = locations[0]
+        // zoom in the map on that location
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+        // location of the user
+        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        // set the region
+        let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
+        // set the map region
+        map.setRegion(region, animated: true)
+        
+        //nadd the blue dot
+        self.map.showsUserLocation = true
+        
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // google API key
+        GMSServices.provideAPIKey("AIzaSyCT-h1fDCLUaQleZ4qdAsZ4rNc2HeuF-JA")
+
+        //
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
+        
+        
+        
+    }
+    
+
+
+   
+
+}

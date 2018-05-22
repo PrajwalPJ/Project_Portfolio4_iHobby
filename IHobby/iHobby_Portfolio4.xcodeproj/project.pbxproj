@@ -1,0 +1,578 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		822E73B920ACB7E900B09652 /* CreateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822E73B820ACB7E900B09652 /* CreateEvent.swift */; };
+		822E73BB20AD0EB200B09652 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 822E73BA20AD0EB200B09652 /* GoogleService-Info.plist */; };
+		822E73BD20AD173100B09652 /* CreateEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 822E73BC20AD173000B09652 /* CreateEvent.storyboard */; };
+		822E73C020AD197700B09652 /* CreatedEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822E73BF20AD197700B09652 /* CreatedEventsTableViewController.swift */; };
+		822E73C620AD1B7B00B09652 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822E73C520AD1B7B00B09652 /* EventCell.swift */; };
+		8259E9BD20A37FB50036D311 /* Home_Explore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8259E9BC20A37FB50036D311 /* Home_Explore.swift */; };
+		8259E9BF20A37FC70036D311 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8259E9BE20A37FC70036D311 /* Notification.swift */; };
+		8259E9C120A37FD50036D311 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8259E9C020A37FD50036D311 /* Calendar.swift */; };
+		8259E9C320A380240036D311 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8259E9C220A380240036D311 /* Profile.swift */; };
+		8259E9CB20A394A60036D311 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8259E9CA20A394A60036D311 /* Search.swift */; };
+		8259E9CD20A394BC0036D311 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8259E9CC20A394BC0036D311 /* Map.swift */; };
+		8259E9D320A395C60036D311 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8259E9D220A395C60036D311 /* Default-568h@2x.png */; };
+		8259E9D520A396520036D311 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8259E9D420A396520036D311 /* Timer.swift */; };
+		8259E9D720A3966D0036D311 /* Attendees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8259E9D620A3966D0036D311 /* Attendees.swift */; };
+		827E884020B0EB5F0036F9BC /* EXPLORE.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 827E883F20B0EB5F0036F9BC /* EXPLORE.storyboard */; };
+		827E884320B2BB700036F9BC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 827E884220B2BB700036F9BC /* MapKit.framework */; };
+		827E884520B2D6720036F9BC /* GoogleMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827E884420B2D6720036F9BC /* GoogleMapsViewController.swift */; };
+		827E884720B2D89C0036F9BC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 827E884620B2D89C0036F9BC /* CoreLocation.framework */; };
+		82B67A4820A502B2003121E5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82B67A4720A502B2003121E5 /* Info.plist */; };
+		82DD2EEA20A374470002CB14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DD2EE920A374470002CB14 /* AppDelegate.swift */; };
+		82DD2EEC20A374470002CB14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DD2EEB20A374470002CB14 /* ViewController.swift */; };
+		82DD2EEF20A374470002CB14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82DD2EED20A374470002CB14 /* Main.storyboard */; };
+		82DD2EF220A374480002CB14 /* iHobby_Portfolio4.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82DD2EF020A374480002CB14 /* iHobby_Portfolio4.xcdatamodeld */; };
+		82DD2EF420A374480002CB14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82DD2EF320A374480002CB14 /* Assets.xcassets */; };
+		82DD2EF720A374480002CB14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82DD2EF520A374480002CB14 /* LaunchScreen.storyboard */; };
+		82E5E70F20A53B3600B859A8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E5E70E20A53B3600B859A8 /* ProfileViewController.swift */; };
+		82E5E71120A542C000B859A8 /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E5E71020A542C000B859A8 /* VerificationViewController.swift */; };
+		82E5E71320ABC0A600B859A8 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E5E71220ABC0A600B859A8 /* CreateEventViewController.swift */; };
+		B9D948FAA1470B450B836A2C /* Pods_iHobby_Portfolio4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28292A410C61A851667F01CB /* Pods_iHobby_Portfolio4.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		179FC69EC1B9C55CAD63C7E1 /* Pods-iHobby_Portfolio4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHobby_Portfolio4.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iHobby_Portfolio4/Pods-iHobby_Portfolio4.debug.xcconfig"; sourceTree = "<group>"; };
+		28292A410C61A851667F01CB /* Pods_iHobby_Portfolio4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iHobby_Portfolio4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		822E73B820ACB7E900B09652 /* CreateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEvent.swift; sourceTree = "<group>"; };
+		822E73BA20AD0EB200B09652 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		822E73BC20AD173000B09652 /* CreateEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateEvent.storyboard; sourceTree = "<group>"; };
+		822E73BF20AD197700B09652 /* CreatedEventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedEventsTableViewController.swift; sourceTree = "<group>"; };
+		822E73C520AD1B7B00B09652 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		8259E9BC20A37FB50036D311 /* Home_Explore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_Explore.swift; sourceTree = "<group>"; };
+		8259E9BE20A37FC70036D311 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		8259E9C020A37FD50036D311 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		8259E9C220A380240036D311 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		8259E9CA20A394A60036D311 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		8259E9CC20A394BC0036D311 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		8259E9D220A395C60036D311 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8259E9D420A396520036D311 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		8259E9D620A3966D0036D311 /* Attendees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attendees.swift; sourceTree = "<group>"; };
+		827E883F20B0EB5F0036F9BC /* EXPLORE.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EXPLORE.storyboard; sourceTree = "<group>"; };
+		827E884120B135B20036F9BC /* iHobby_Portfolio4.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iHobby_Portfolio4.entitlements; sourceTree = "<group>"; };
+		827E884220B2BB700036F9BC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		827E884420B2D6720036F9BC /* GoogleMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsViewController.swift; sourceTree = "<group>"; };
+		827E884620B2D89C0036F9BC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		82B67A4720A502B2003121E5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82DD2EE620A374470002CB14 /* iHobby_Portfolio4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iHobby_Portfolio4.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		82DD2EE920A374470002CB14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		82DD2EEB20A374470002CB14 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		82DD2EEE20A374470002CB14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		82DD2EF120A374480002CB14 /* iHobby_Portfolio4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iHobby_Portfolio4.xcdatamodel; sourceTree = "<group>"; };
+		82DD2EF320A374480002CB14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		82DD2EF620A374480002CB14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		82E5E70E20A53B3600B859A8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		82E5E71020A542C000B859A8 /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
+		82E5E71220ABC0A600B859A8 /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
+		D42737866798540D334BB05F /* Pods-iHobby_Portfolio4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHobby_Portfolio4.release.xcconfig"; path = "Pods/Target Support Files/Pods-iHobby_Portfolio4/Pods-iHobby_Portfolio4.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		82DD2EE320A374470002CB14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				827E884720B2D89C0036F9BC /* CoreLocation.framework in Frameworks */,
+				827E884320B2BB700036F9BC /* MapKit.framework in Frameworks */,
+				B9D948FAA1470B450B836A2C /* Pods_iHobby_Portfolio4.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		117A5B8B789750D4F5FDD16D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				827E884620B2D89C0036F9BC /* CoreLocation.framework */,
+				827E884220B2BB700036F9BC /* MapKit.framework */,
+				28292A410C61A851667F01CB /* Pods_iHobby_Portfolio4.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8259E9CE20A395280036D311 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8259E9BC20A37FB50036D311 /* Home_Explore.swift */,
+				8259E9BE20A37FC70036D311 /* Notification.swift */,
+				8259E9C020A37FD50036D311 /* Calendar.swift */,
+				8259E9C220A380240036D311 /* Profile.swift */,
+				8259E9CA20A394A60036D311 /* Search.swift */,
+				8259E9CC20A394BC0036D311 /* Map.swift */,
+				8259E9D420A396520036D311 /* Timer.swift */,
+				8259E9D620A3966D0036D311 /* Attendees.swift */,
+				822E73B820ACB7E900B09652 /* CreateEvent.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		8259E9CF20A3954F0036D311 /* Storyboard References */ = {
+			isa = PBXGroup;
+			children = (
+				827E883F20B0EB5F0036F9BC /* EXPLORE.storyboard */,
+				822E73BC20AD173000B09652 /* CreateEvent.storyboard */,
+				82DD2EED20A374470002CB14 /* Main.storyboard */,
+			);
+			path = "Storyboard References";
+			sourceTree = "<group>";
+		};
+		8259E9D020A395630036D311 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				827E884420B2D6720036F9BC /* GoogleMapsViewController.swift */,
+				822E73C520AD1B7B00B09652 /* EventCell.swift */,
+				82DD2EEB20A374470002CB14 /* ViewController.swift */,
+				82E5E70E20A53B3600B859A8 /* ProfileViewController.swift */,
+				82E5E71020A542C000B859A8 /* VerificationViewController.swift */,
+				82E5E71220ABC0A600B859A8 /* CreateEventViewController.swift */,
+				822E73BF20AD197700B09652 /* CreatedEventsTableViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		8259E9D120A3958C0036D311 /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				82DD2EE920A374470002CB14 /* AppDelegate.swift */,
+				82DD2EF320A374480002CB14 /* Assets.xcassets */,
+				82DD2EF520A374480002CB14 /* LaunchScreen.storyboard */,
+				82B67A4720A502B2003121E5 /* Info.plist */,
+				822E73BA20AD0EB200B09652 /* GoogleService-Info.plist */,
+			);
+			path = Extras;
+			sourceTree = "<group>";
+		};
+		82DD2EDD20A374470002CB14 = {
+			isa = PBXGroup;
+			children = (
+				8259E9D220A395C60036D311 /* Default-568h@2x.png */,
+				82DD2EE820A374470002CB14 /* iHobby_Portfolio4 */,
+				82DD2EE720A374470002CB14 /* Products */,
+				F124D4DA7FBAEE136EDE9648 /* Pods */,
+				117A5B8B789750D4F5FDD16D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		82DD2EE720A374470002CB14 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				82DD2EE620A374470002CB14 /* iHobby_Portfolio4.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		82DD2EE820A374470002CB14 /* iHobby_Portfolio4 */ = {
+			isa = PBXGroup;
+			children = (
+				827E884120B135B20036F9BC /* iHobby_Portfolio4.entitlements */,
+				8259E9D020A395630036D311 /* View Controllers */,
+				8259E9CF20A3954F0036D311 /* Storyboard References */,
+				8259E9CE20A395280036D311 /* Classes */,
+				8259E9D120A3958C0036D311 /* Extras */,
+				82DD2EF020A374480002CB14 /* iHobby_Portfolio4.xcdatamodeld */,
+			);
+			path = iHobby_Portfolio4;
+			sourceTree = "<group>";
+		};
+		F124D4DA7FBAEE136EDE9648 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				179FC69EC1B9C55CAD63C7E1 /* Pods-iHobby_Portfolio4.debug.xcconfig */,
+				D42737866798540D334BB05F /* Pods-iHobby_Portfolio4.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		82DD2EE520A374470002CB14 /* iHobby_Portfolio4 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82DD2EFB20A374480002CB14 /* Build configuration list for PBXNativeTarget "iHobby_Portfolio4" */;
+			buildPhases = (
+				E5A78FABD7D8618C672FAC31 /* [CP] Check Pods Manifest.lock */,
+				82DD2EE220A374470002CB14 /* Sources */,
+				82DD2EE320A374470002CB14 /* Frameworks */,
+				82DD2EE420A374470002CB14 /* Resources */,
+				CAAB55CCC602880B5444452E /* [CP] Embed Pods Frameworks */,
+				F0A4726ED7F9CB68D2CD6A9A /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iHobby_Portfolio4;
+			productName = iHobby_Portfolio4;
+			productReference = 82DD2EE620A374470002CB14 /* iHobby_Portfolio4.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		82DD2EDE20A374470002CB14 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Prajwal Ramamurthy";
+				TargetAttributes = {
+					82DD2EE520A374470002CB14 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 82DD2EE120A374470002CB14 /* Build configuration list for PBXProject "iHobby_Portfolio4" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 82DD2EDD20A374470002CB14;
+			productRefGroup = 82DD2EE720A374470002CB14 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				82DD2EE520A374470002CB14 /* iHobby_Portfolio4 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		82DD2EE420A374470002CB14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82DD2EF720A374480002CB14 /* LaunchScreen.storyboard in Resources */,
+				827E884020B0EB5F0036F9BC /* EXPLORE.storyboard in Resources */,
+				8259E9D320A395C60036D311 /* Default-568h@2x.png in Resources */,
+				82DD2EF420A374480002CB14 /* Assets.xcassets in Resources */,
+				822E73BD20AD173100B09652 /* CreateEvent.storyboard in Resources */,
+				82B67A4820A502B2003121E5 /* Info.plist in Resources */,
+				82DD2EEF20A374470002CB14 /* Main.storyboard in Resources */,
+				822E73BB20AD0EB200B09652 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CAAB55CCC602880B5444452E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iHobby_Portfolio4/Pods-iHobby_Portfolio4-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iHobby_Portfolio4/Pods-iHobby_Portfolio4-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5A78FABD7D8618C672FAC31 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iHobby_Portfolio4-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F0A4726ED7F9CB68D2CD6A9A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iHobby_Portfolio4/Pods-iHobby_Portfolio4-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iHobby_Portfolio4/Pods-iHobby_Portfolio4-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		82DD2EE220A374470002CB14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8259E9CB20A394A60036D311 /* Search.swift in Sources */,
+				8259E9BD20A37FB50036D311 /* Home_Explore.swift in Sources */,
+				8259E9C320A380240036D311 /* Profile.swift in Sources */,
+				82DD2EF220A374480002CB14 /* iHobby_Portfolio4.xcdatamodeld in Sources */,
+				8259E9D520A396520036D311 /* Timer.swift in Sources */,
+				8259E9BF20A37FC70036D311 /* Notification.swift in Sources */,
+				82DD2EEC20A374470002CB14 /* ViewController.swift in Sources */,
+				822E73C020AD197700B09652 /* CreatedEventsTableViewController.swift in Sources */,
+				827E884520B2D6720036F9BC /* GoogleMapsViewController.swift in Sources */,
+				822E73C620AD1B7B00B09652 /* EventCell.swift in Sources */,
+				822E73B920ACB7E900B09652 /* CreateEvent.swift in Sources */,
+				82DD2EEA20A374470002CB14 /* AppDelegate.swift in Sources */,
+				82E5E71120A542C000B859A8 /* VerificationViewController.swift in Sources */,
+				82E5E71320ABC0A600B859A8 /* CreateEventViewController.swift in Sources */,
+				8259E9D720A3966D0036D311 /* Attendees.swift in Sources */,
+				82E5E70F20A53B3600B859A8 /* ProfileViewController.swift in Sources */,
+				8259E9CD20A394BC0036D311 /* Map.swift in Sources */,
+				8259E9C120A37FD50036D311 /* Calendar.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		82DD2EED20A374470002CB14 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				82DD2EEE20A374470002CB14 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		82DD2EF520A374480002CB14 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				82DD2EF620A374480002CB14 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		82DD2EF920A374480002CB14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		82DD2EFA20A374480002CB14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		82DD2EFC20A374480002CB14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 179FC69EC1B9C55CAD63C7E1 /* Pods-iHobby_Portfolio4.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iHobby_Portfolio4/iHobby_Portfolio4.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MYLQWYYN25;
+				INFOPLIST_FILE = "$(SRCROOT)/iHobby_Portfolio4/Extras/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fullsail.iHobby-Portfolio4";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		82DD2EFD20A374480002CB14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D42737866798540D334BB05F /* Pods-iHobby_Portfolio4.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iHobby_Portfolio4/iHobby_Portfolio4.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MYLQWYYN25;
+				INFOPLIST_FILE = "$(SRCROOT)/iHobby_Portfolio4/Extras/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fullsail.iHobby-Portfolio4";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		82DD2EE120A374470002CB14 /* Build configuration list for PBXProject "iHobby_Portfolio4" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82DD2EF920A374480002CB14 /* Debug */,
+				82DD2EFA20A374480002CB14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		82DD2EFB20A374480002CB14 /* Build configuration list for PBXNativeTarget "iHobby_Portfolio4" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82DD2EFC20A374480002CB14 /* Debug */,
+				82DD2EFD20A374480002CB14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		82DD2EF020A374480002CB14 /* iHobby_Portfolio4.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				82DD2EF120A374480002CB14 /* iHobby_Portfolio4.xcdatamodel */,
+			);
+			currentVersion = 82DD2EF120A374480002CB14 /* iHobby_Portfolio4.xcdatamodel */;
+			path = iHobby_Portfolio4.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 82DD2EDE20A374470002CB14 /* Project object */;
+}

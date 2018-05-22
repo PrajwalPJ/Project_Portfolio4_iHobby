@@ -1,0 +1,6 @@
+framework module Pods_iHobby_Portfolio4 {
+  umbrella header "Pods-iHobby_Portfolio4-umbrella.h"
+
+  export *
+  module * { export * }
+}
