@@ -10,12 +10,14 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseAuth
 
 class CreateEventViewController: UIViewController, UITextFieldDelegate {
     
     // stored variables
     var createAnEvent: [CreateEvent] = []
     var ref: DatabaseReference?
+    var facebookID: [Attendees] = []
 
     // outlets and actions
     @IBOutlet weak var nameTextField: UITextField!
@@ -24,6 +26,10 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var timeTextField: UITextField!
     
+    var pulledUserId = UserDefaults.standard
+    
+    var myUniqueId: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,15 +37,28 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         self.timeTextField.delegate = self
         
     }
-    
+    func createValidation(){
+        if nameTextField.text != nil || descTextField.text != nil || locTextField.text != nil || dateTextField.text != nil || timeTextField.text != nil{
+            showAlert((Any).self)
+        }else{
+            
+            storeToDatabase()
+        }
+    }
     // create button
     // user will be able to create a custom event
     @IBAction func CreateButton(_ sender: Any) {
+
+       
+    }
+    
+    func storeToDatabase(){
         // set the firebase reference
         ref = Database.database().reference()
         
         // create an unique ID to store each event in the database
         let uniqueID = ref?.child("Event").childByAutoId()
+        //.childByAutoId()
         // make sure nothing is nil and then set values
         if nameTextField.text != "" {
             uniqueID?.child("Title").setValue(nameTextField.text)
@@ -56,23 +75,40 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         if timeTextField.text != "" {
             uniqueID?.child("Time").setValue(timeTextField.text)
         }
-        else{
-            // need to create an alert pop up message here.
-            print("Empty")
-        }
+        uniqueID?.child("UniqueID")
+        
+        //  guard let uid = Auth.auth().currentUser?.uid else {
+        //     return
+        // }
+        
+        //print(uid)
+        
+        //uniqueID?.child("uid").setValue(uid)
+        
+        createAnEvent.append(CreateEvent(ieventTitle: nameTextField.text, ieventTime: timeTextField.text, ieventLocation: locTextField.text, ieventDescription: descTextField.text, ieventDate: dateTextField.text, initId: myUniqueId))
         // perform segue to pass data between controllers
-       performSegue(withIdentifier: "CreateToView", sender: self)
+        performSegue(withIdentifier: "CreateToView", sender: self)
     }
-   
     //pass data that need to be passed from one controller to the other
     // Segue from Create to Created
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let secController = segue.destination as? CreatedEventsTableViewController
-        secController?.myString1 = nameTextField.text!
-        secController?.myString2 = timeTextField.text!
-        secController?.myString3 = dateTextField.text!
+
+            let secController = segue.destination as? CreatedEventsTableViewController
+            secController?.myString1 = nameTextField.text!
+            secController?.myString2 = timeTextField.text!
+            secController?.myString3 = dateTextField.text!
+        
+  
     }
- 
+
+    func showAlert(_ sender: Any) {
+        let alertController = UIAlertController(title: "Attention", message:
+            "Please do not leave any fields blank.", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     // Hide keyboard when clicked outside
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)

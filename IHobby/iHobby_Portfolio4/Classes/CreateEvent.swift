@@ -8,13 +8,22 @@
 
 import Foundation
 
-class CreateEvent{
+class CreateEvent: NSObject{
     var eventTitle: String?
     var eventTime: String?
     var eventLocation: String?
     var eventDescription: String?
     var eventDate: String?
-    var id : String?
+    var id: String?
+    
+    override init(){
+        eventTitle = " "
+        eventTime = ""
+        eventDate = ""
+        eventDescription = ""
+        eventLocation = ""
+        id = ""
+    }
     
     init(ieventTitle: String?, ieventTime: String?, ieventLocation: String?, ieventDescription: String?, ieventDate: String?, initId: String?) {
         self.eventDate = ieventDate

@@ -25,6 +25,7 @@
 		827E884520B2D6720036F9BC /* GoogleMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827E884420B2D6720036F9BC /* GoogleMapsViewController.swift */; };
 		827E884720B2D89C0036F9BC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 827E884620B2D89C0036F9BC /* CoreLocation.framework */; };
 		828137F620B4DE81004C1ED8 /* ExploreEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828137F520B4DE81004C1ED8 /* ExploreEventsTableViewController.swift */; };
+		828137F820B4E891004C1ED8 /* ExploreEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828137F720B4E891004C1ED8 /* ExploreEventCell.swift */; };
 		82B67A4820A502B2003121E5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82B67A4720A502B2003121E5 /* Info.plist */; };
 		82DD2EEA20A374470002CB14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DD2EE920A374470002CB14 /* AppDelegate.swift */; };
 		82DD2EEC20A374470002CB14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DD2EEB20A374470002CB14 /* ViewController.swift */; };
@@ -60,6 +61,7 @@
 		827E884420B2D6720036F9BC /* GoogleMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsViewController.swift; sourceTree = "<group>"; };
 		827E884620B2D89C0036F9BC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		828137F520B4DE81004C1ED8 /* ExploreEventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreEventsTableViewController.swift; sourceTree = "<group>"; };
+		828137F720B4E891004C1ED8 /* ExploreEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreEventCell.swift; sourceTree = "<group>"; };
 		82B67A4720A502B2003121E5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82DD2EE620A374470002CB14 /* iHobby_Portfolio4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iHobby_Portfolio4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DD2EE920A374470002CB14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,14 +128,15 @@
 		8259E9D020A395630036D311 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				828137F520B4DE81004C1ED8 /* ExploreEventsTableViewController.swift */,
-				827E884420B2D6720036F9BC /* GoogleMapsViewController.swift */,
-				822E73C520AD1B7B00B09652 /* EventCell.swift */,
 				82DD2EEB20A374470002CB14 /* ViewController.swift */,
 				82E5E70E20A53B3600B859A8 /* ProfileViewController.swift */,
 				82E5E71020A542C000B859A8 /* VerificationViewController.swift */,
 				82E5E71220ABC0A600B859A8 /* CreateEventViewController.swift */,
+				822E73C520AD1B7B00B09652 /* EventCell.swift */,
 				822E73BF20AD197700B09652 /* CreatedEventsTableViewController.swift */,
+				828137F520B4DE81004C1ED8 /* ExploreEventsTableViewController.swift */,
+				828137F720B4E891004C1ED8 /* ExploreEventCell.swift */,
+				827E884420B2D6720036F9BC /* GoogleMapsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 			files = (
 				8259E9CB20A394A60036D311 /* Search.swift in Sources */,
 				8259E9BD20A37FB50036D311 /* Home_Explore.swift in Sources */,
+				828137F820B4E891004C1ED8 /* ExploreEventCell.swift in Sources */,
 				8259E9C320A380240036D311 /* Profile.swift in Sources */,
 				82DD2EF220A374480002CB14 /* iHobby_Portfolio4.xcdatamodeld in Sources */,
 				8259E9D520A396520036D311 /* Timer.swift in Sources */,

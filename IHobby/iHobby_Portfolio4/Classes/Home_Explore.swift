@@ -6,4 +6,14 @@
 //  Copyright © 2018 Prajwal Ramamurthy. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class Home_Explore: NSObject{
+    
+    var email: String?
+    var eventTitle: String?
+    var eventDate: String?
+    var eventTime: String?
+    var id: String?
+    
+}

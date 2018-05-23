@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+class Attendees{
+    
+    var id : String?
+    
+    init(InitID: String?){
+        self.id = InitID
+    }
+}

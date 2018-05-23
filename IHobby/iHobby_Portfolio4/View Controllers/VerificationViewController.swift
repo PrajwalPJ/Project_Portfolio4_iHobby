@@ -14,7 +14,7 @@ class VerificationViewController: UIViewController, UINavigationControllerDelega
    // let pro = ProfileViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
-        performSegue(withIdentifier: "GreenVerify", sender: self)
+       // performSegue(withIdentifier: "GreenVerify", sender: self)
         
         // Do any additional setup after loading the view.
     }
@@ -33,7 +33,7 @@ class VerificationViewController: UIViewController, UINavigationControllerDelega
     }
     
     @IBAction func VerifyButton(_ sender: Any) {
-        if IDImaageView != nil {
+        if IDImaageView?.image != nil {
             performSegue(withIdentifier: "verToPro", sender: self)
             
             func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,13 +47,14 @@ class VerificationViewController: UIViewController, UINavigationControllerDelega
             }
             
         }else{
+            
             showAlert((Any).self)
         }
     }
     
     func showAlert(_ sender: Any) {
-        let alertController = UIAlertController(title: "iOScreator", message:
-            "Hello, world!", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Attention", message:
+            "Please Upload an ID to verify account!", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
         
         self.present(alertController, animated: true, completion: nil)

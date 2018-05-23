@@ -10,8 +10,17 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
+
+
 class ExploreEventsTableViewController: UITableViewController {
 
+    // reference to the databse
+    var ref: DatabaseReference!
+    var refHandle: DatabaseHandle?
+    // array to use the objects and store in
+    var eventList: [CreateEvent] = []
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,11 +29,40 @@ class ExploreEventsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-        var ref: DatabaseReference?
-        var databaseHandle: DatabaseHandle?
+
         // set the firebase reference
         ref = Database.database().reference()
+        // call our fetch function
+        GetFirebaseData()
+        
+
+        
+    }
+
+    // custom function to fetch data
+    func GetFirebaseData()
+    {
+        ref = Database.database().reference().child("Event") //setting my reference to start inside of my users node
+        ref.observe(.childAdded, with: { (snapshot) in
+            
+            print(snapshot.value)
+            // Get user value and set it to the currentPerson object that i have set
+            let event = snapshot.value as? NSDictionary
+
+            let title = event?["Title"] as? String ?? ""
+            let date = event?["Date"] as? String ?? ""
+            let time = event?["Time"] as? String ?? ""
+            
+            self.eventList.append(CreateEvent(ieventTitle: title, ieventTime: time, ieventLocation: "", ieventDescription: "", ieventDate: date, initId: ""))
+            // reload tableview
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
+        })
+        { (error) in
+            print(error.localizedDescription)
+        }
     }
 
 
@@ -32,26 +70,34 @@ class ExploreEventsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return eventList.count
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 140
     }
 
     
-
     
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExploreCellID1", for: indexPath) as? ExploreEventCell
+            else{
+                return tableView.dequeueReusableCell(withIdentifier: "ExploreCellID1", for: indexPath)
+        }
 
         // Configure the cell...
+        cell.exploreTitle.text = eventList[indexPath.row].eventTitle
+        cell.exploreTime.text = eventList[indexPath.row].eventTime
+        cell.exploreDate.text = eventList[indexPath.row].eventDate
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

@@ -165,7 +165,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="CREATED EVENTS" id="irj-Zk-cnR">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="trash" id="BdG-qK-pMK">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="BdG-qK-pMK">
                             <connections>
                                 <action selector="DeleteEventButton:" destination="Fd0-tU-4fX" id="U2e-hu-P0U"/>
                             </connections>

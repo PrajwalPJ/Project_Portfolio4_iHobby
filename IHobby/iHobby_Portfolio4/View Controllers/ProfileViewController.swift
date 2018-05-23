@@ -11,9 +11,11 @@ import FBSDKLoginKit
 import Firebase
 import FirebaseDatabase
 
+var global_UserID:String? //using a global uid to help me search through my database
 // Profile Page Controller
 class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     
+    var userIDTest: [Attendees] = []
     var ver:VerificationViewController?
     // create the outlets for the labels
     @IBOutlet weak var emailLabel: UILabel!
@@ -23,6 +25,7 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var image: UIImageView?
     @IBOutlet weak var verifyButton: UIButton?
     
+   // let defaults: UserDefaults
     // Start of the view controller
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +41,12 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     @IBAction func unwindToVC1(segue:UIStoryboardSegue) { }
-    // Edit button
-    @IBAction func EditButton(_ sender: Any) {
-        
-    }
+  
     
+    @IBAction func BackButton(_ sender: Any) {
+        // perform segue
+        // identifier "ProfileToHome"
+    }
     // Verify Button
     @IBAction func VerificationButton(_ sender: Any) {
     }
@@ -54,6 +58,8 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
             //print permissions, such as public_profile
             print(FBSDKAccessToken.current().permissions)
             let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields" : "id, name, email"])
+            
+            // let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
             // request a connection
             let connection = FBSDKGraphRequestConnection()
             connection.add(graphRequest, completionHandler: { (connection, result, error) -> Void in
@@ -83,12 +89,19 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
                     uniqueID?.child("Email").setValue(self.emailLabel.text)
                 }
                 uniqueID?.child("ID").setValue(FBid)
+                
+                global_UserID = FBid
+                
+                self.userIDTest.append(Attendees(InitID: FBid))
+    
+                
             })
             connection.start()
             print()
         }
     }
     
+ 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         verifyButton?.backgroundColor? = UIColor.green
         verifyButton?.setTitle("VERIFIED", for: .normal)

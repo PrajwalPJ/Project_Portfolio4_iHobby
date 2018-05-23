@@ -25,10 +25,12 @@ class CreatedEventsTableViewController: UITableViewController {
     // start of the view controller
     override func viewDidLoad() {
         super.viewDidLoad()
-        //FirebaseApp.configure()
+
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        navigationItem.rightBarButtonItem = editButtonItem
         
         databaseWork()
         
@@ -40,14 +42,24 @@ class CreatedEventsTableViewController: UITableViewController {
             if editingStyle == .delete {
                 print("Deleted")
                 
-                // self.catNames.remove(at: indexPath.row)
+                self.tableview.deleteRows(at: [indexPath], with: .fade)
+                //remove(at: indexPath.row)
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                
+        
             }}
+        
+    }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete{
+            createTheEvent.remove(at: indexPath.row)
+            tableview.reloadData()
+        }
     }
     
     // Edit event button functionality
     @IBAction func EditEventButton(_ sender: Any) {
-        presentingViewController?.dismiss(animated: true, completion: nil)
+       // presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     // custom function to get database connection and pull and request data from the database
@@ -93,13 +105,15 @@ class CreatedEventsTableViewController: UITableViewController {
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
-                self.performSegue(withIdentifier: "CreateToView", sender: self)
+                //self.performSegue(withIdentifier: "CreateToView", sender: self)
                 
                 print(self.eventData)
             }
             
         })
     }
+    
+  
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
