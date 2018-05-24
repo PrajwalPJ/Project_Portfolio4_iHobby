@@ -10,16 +10,21 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
+class ExploreEventsTableViewController: UITableViewController, UISearchBarDelegate {
 
-
-class ExploreEventsTableViewController: UITableViewController {
-
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var isSearching = false
+    
+       var filteredEvents = [CreateEvent]()
     // reference to the databse
     var ref: DatabaseReference!
     var refHandle: DatabaseHandle?
     // array to use the objects and store in
     var eventList: [CreateEvent] = []
+    
 
+    var searchText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +40,13 @@ class ExploreEventsTableViewController: UITableViewController {
         // call our fetch function
         GetFirebaseData()
         
-
+        // search bar
+        searchBar.delegate = self
         
+        searchBar.returnKeyType = UIReturnKeyType.done
+
+          searchBarTextDidEndEditing(searchBar)
+       // searchBarO()
     }
 
     // custom function to fetch data
@@ -75,7 +85,12 @@ class ExploreEventsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return eventList.count
+     
+        
+        if isSearching{
+            return filteredEvents.count
+        }
+           return eventList.count
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -89,16 +104,52 @@ class ExploreEventsTableViewController: UITableViewController {
             else{
                 return tableView.dequeueReusableCell(withIdentifier: "ExploreCellID1", for: indexPath)
         }
-
+        var text = [CreateEvent].Element()
+        if isSearching{
+            text = filteredEvents[indexPath.row]
+        }
         // Configure the cell...
         cell.exploreTitle.text = eventList[indexPath.row].eventTitle
         cell.exploreTime.text = eventList[indexPath.row].eventTime
         cell.exploreDate.text = eventList[indexPath.row].eventDate
 
+        
         return cell
     }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.resignFirstResponder()
+        if searchBar.text != ""
+        {
+            searchText = searchBar.text!
+        }
+        
+        searchBarTextDidEndEditing(searchBar)
+        tableView.reloadData()
+    }
     
-
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if searchBar.text == nil || searchBar.text == ""{
+            isSearching = false
+            
+            view.endEditing(true)
+            
+            tableView.reloadData()
+            
+            
+        }else{
+            isSearching = true
+            let searchString = searchText.trimWhiteSpace()
+            if searchString != "", searchString.count > 0 {
+                let filterData = eventList.filter {
+                    return $0.id?.range(of: searchString, options: .caseInsensitive) != nil
+                }
+            }
+            tableView.reloadData()
+        }
+        
+    }
+ 
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -144,4 +195,10 @@ class ExploreEventsTableViewController: UITableViewController {
     }
     */
 
+}
+extension String {
+    func trimWhiteSpace() -> String {
+        let string = self.trimmingCharacters(in: .whitespacesAndNewlines)
+        return string
+    }
 }

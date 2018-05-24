@@ -18,7 +18,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     var createAnEvent: [CreateEvent] = []
     var ref: DatabaseReference?
     var facebookID: [Attendees] = []
-
+    
     // outlets and actions
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descTextField: UITextField!
@@ -37,19 +37,28 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         self.timeTextField.delegate = self
         
     }
-    func createValidation(){
-        if nameTextField.text != nil || descTextField.text != nil || locTextField.text != nil || dateTextField.text != nil || timeTextField.text != nil{
-            showAlert((Any).self)
-        }else{
-            
-            storeToDatabase()
-        }
-    }
+    
     // create button
     // user will be able to create a custom event
     @IBAction func CreateButton(_ sender: Any) {
-
-       
+        
+        if nameTextField.text == nil{
+            showAlert((Any).self)
+        }else if descTextField.text == nil{
+            showAlert((Any).self)
+        }else if locTextField.text == nil{
+            showAlert((Any).self)
+        }else if dateTextField.text == nil{
+            showAlert((Any).self)
+        }else if timeTextField.text == nil{
+            showAlert((Any).self)
+        }else{
+                    storeToDatabase()
+        }
+        
+ 
+      
+        
     }
     
     func storeToDatabase(){
@@ -92,15 +101,15 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     //pass data that need to be passed from one controller to the other
     // Segue from Create to Created
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-            let secController = segue.destination as? CreatedEventsTableViewController
-            secController?.myString1 = nameTextField.text!
-            secController?.myString2 = timeTextField.text!
-            secController?.myString3 = dateTextField.text!
         
-  
+        let secController = segue.destination as? CreatedEventsTableViewController
+        secController?.myString1 = nameTextField.text!
+        secController?.myString2 = timeTextField.text!
+        secController?.myString3 = dateTextField.text!
+        
+        
     }
-
+    
     func showAlert(_ sender: Any) {
         let alertController = UIAlertController(title: "Attention", message:
             "Please do not leave any fields blank.", preferredStyle: UIAlertControllerStyle.alert)
@@ -108,7 +117,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         
         self.present(alertController, animated: true, completion: nil)
     }
-    
+    /*
     // Hide keyboard when clicked outside
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -119,8 +128,8 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         timeTextField.resignFirstResponder()
         return true
     }
-
     
+    */
     
     
     
@@ -128,20 +137,20 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     
     
     /*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dvc = segue.destination as? CreatedEventsTableViewController {
-            dvc.eventData[0] = createAnEvent[tableView.indexPathForSelectedRow!.row]
-        }
-    }
-    */
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     if let dvc = segue.destination as? CreatedEventsTableViewController {
+     dvc.eventData[0] = createAnEvent[tableView.indexPathForSelectedRow!.row]
+     }
+     }
+     */
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

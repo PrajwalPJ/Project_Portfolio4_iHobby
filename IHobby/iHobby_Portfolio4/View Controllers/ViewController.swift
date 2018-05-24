@@ -50,7 +50,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             return
         }
         // call our function
-        getFacebookUserInfo()
+        //getFacebookUserInfo()
     }
     
     // custom function to request data from facebook SDK

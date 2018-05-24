@@ -15,6 +15,7 @@ class GoogleMapsViewController: UIViewController, CLLocationManagerDelegate, UIS
 
    
     @IBOutlet weak var map: MKMapView!
+    
     @IBAction func SearchButton(_ sender: Any) {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self

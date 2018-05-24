@@ -18,10 +18,10 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     var userIDTest: [Attendees] = []
     var ver:VerificationViewController?
     // create the outlets for the labels
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var phoneNumberLabel: UILabel!
-    @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel?
+    @IBOutlet weak var phoneNumberLabel: UILabel?
+    @IBOutlet weak var cityLabel: UILabel?
+    @IBOutlet weak var userNameLabel: UILabel?
     @IBOutlet weak var image: UIImageView?
     @IBOutlet weak var verifyButton: UIButton?
     
@@ -42,6 +42,7 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     @IBAction func unwindToVC1(segue:UIStoryboardSegue) { }
   
+    @IBAction func unwindToVC2(segue:UIStoryboardSegue) { }
     
     @IBAction func BackButton(_ sender: Any) {
         // perform segue
@@ -67,8 +68,8 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
                 let data = result as! [String : AnyObject]
                 
                 // assign the labels
-                self.userNameLabel.text = data["name"] as? String
-                self.emailLabel.text = data["email"] as? String
+                self.userNameLabel?.text = data["name"] as? String
+                self.emailLabel?.text = data["email"] as? String
                 
                 let FBid = data["id"] as? String
                 
@@ -82,11 +83,11 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
                 
                 let uniqueID = ref?.child("Profile").childByAutoId()
                 
-                if self.userNameLabel.text != "" {
-                    uniqueID?.child("Name").setValue(self.userNameLabel.text)
+                if self.userNameLabel?.text != "" {
+                    uniqueID?.child("Name").setValue(self.userNameLabel?.text)
                 }
-                if self.emailLabel.text != "" {
-                    uniqueID?.child("Email").setValue(self.emailLabel.text)
+                if self.emailLabel?.text != "" {
+                    uniqueID?.child("Email").setValue(self.emailLabel?.text)
                 }
                 uniqueID?.child("ID").setValue(FBid)
                 
