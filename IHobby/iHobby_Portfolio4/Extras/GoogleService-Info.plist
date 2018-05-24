@@ -21,17 +21,19 @@
 	<key>STORAGE_BUCKET</key>
 	<string>ihobby-8d167.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:756697008943:ios:99742c92c9f2b0d9</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCT-h1fDCLUaQleZ4qdAsZ4rNc2HeuF-JA</string>
 	<key>DATABASE_URL</key>
 	<string>https://ihobby-8d167.firebaseio.com</string>
 </dict>

@@ -25,15 +25,41 @@ class CreatedEventsTableViewController: UITableViewController {
     // start of the view controller
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         tableView.delegate = self
         tableView.dataSource = self
         
         navigationItem.rightBarButtonItem = editButtonItem
-        
+        GetFirebaseData()
         databaseWork()
         
+    }
+    
+    // custom function to fetch data
+    func GetFirebaseData()
+    {
+        ref = Database.database().reference().child("Event") //setting my reference to start inside of my users node
+        ref?.observe(.childAdded, with: { (snapshot) in
+            
+            print(snapshot.value)
+            // Get user value and set it to the currentPerson object that i have set
+            let event = snapshot.value as? NSDictionary
+            
+            let title = event?["Title"] as? String ?? ""
+            let date = event?["Date"] as? String ?? ""
+            let time = event?["Time"] as? String ?? ""
+            
+            //self.eventList.append(CreateEvent(ieventTitle: title, ieventTime: time, ieventLocation: "", ieventDescription: "", ieventDate: date, initId: ""))
+            // reload tableview
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
+        })
+        { (error) in
+            print(error.localizedDescription)
+        }
     }
     
     // Delete button functionality
@@ -46,7 +72,7 @@ class CreatedEventsTableViewController: UITableViewController {
                 //remove(at: indexPath.row)
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
                 
-        
+                
             }}
         
     }
@@ -59,7 +85,7 @@ class CreatedEventsTableViewController: UITableViewController {
     
     // Edit event button functionality
     @IBAction func EditEventButton(_ sender: Any) {
-       // presentingViewController?.dismiss(animated: true, completion: nil)
+        // presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     // custom function to get database connection and pull and request data from the database
@@ -68,7 +94,7 @@ class CreatedEventsTableViewController: UITableViewController {
         ref = Database.database().reference()
         
         // testing again to read data
-        ref?.observe(DataEventType.value, with: {(snapshot) in
+        ref?.observe(DataEventType.childAdded, with: {(snapshot) in
             
             if snapshot.childrenCount > 0{
                 self.createTheEvent.removeAll()
@@ -113,7 +139,7 @@ class CreatedEventsTableViewController: UITableViewController {
         })
     }
     
-  
+    
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -123,7 +149,7 @@ class CreatedEventsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return createTheEvent.count
     }
     
     // set cell height
@@ -141,7 +167,7 @@ class CreatedEventsTableViewController: UITableViewController {
         
         //cell.eventTitle.text = createTheEvent[indexPath.row].eventTitle
         // Configure the cell...
-       cell.eventTitle.text = myString1
+        cell.eventTitle.text = myString1
         cell.eventTime.text = myString2
         cell.eventDate.text = myString3
         

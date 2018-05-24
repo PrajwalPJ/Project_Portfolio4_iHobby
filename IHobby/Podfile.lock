@@ -70,6 +70,8 @@ PODS:
 DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
+  - FBSDKCoreKit
+  - FBSDKLoginKit
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -118,6 +120,6 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
 
-PODFILE CHECKSUM: 0738a3fdb4a59662a55c788b088c27900d9887bd
+PODFILE CHECKSUM: 5daca7fc2f0304f49db45d87f6f316492e6786b6
 
 COCOAPODS: 1.5.2

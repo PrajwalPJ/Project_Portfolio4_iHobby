@@ -53,11 +53,11 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         }else if timeTextField.text == nil{
             showAlert((Any).self)
         }else{
-                    storeToDatabase()
+            storeToDatabase()
         }
         
- 
-      
+        
+        
         
     }
     
@@ -86,13 +86,13 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         }
         uniqueID?.child("UniqueID")
         
-        //  guard let uid = Auth.auth().currentUser?.uid else {
-        //     return
-        // }
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
         
-        //print(uid)
+        print(uid)
         
-        //uniqueID?.child("uid").setValue(uid)
+        uniqueID?.child("uid").setValue(uid)
         
         createAnEvent.append(CreateEvent(ieventTitle: nameTextField.text, ieventTime: timeTextField.text, ieventLocation: locTextField.text, ieventDescription: descTextField.text, ieventDate: dateTextField.text, initId: myUniqueId))
         // perform segue to pass data between controllers
@@ -118,18 +118,18 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         self.present(alertController, animated: true, completion: nil)
     }
     /*
-    // Hide keyboard when clicked outside
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
-    // hide keyboard when user presses the return key
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        timeTextField.resignFirstResponder()
-        return true
-    }
-    
-    */
+     // Hide keyboard when clicked outside
+     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+     self.view.endEditing(true)
+     }
+     
+     // hide keyboard when user presses the return key
+     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+     timeTextField.resignFirstResponder()
+     return true
+     }
+     
+     */
     
     
     

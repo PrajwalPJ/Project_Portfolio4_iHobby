@@ -9,27 +9,27 @@
 import UIKit
 
 class EditProfileViewController: UIViewController {
-
+    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var mobileNumberField: UITextField!
     
-
+    
     var phoneNum: String?
     var email: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         emailField.delegate? = self
         mobileNumberField.delegate? = self
     }
-
+    
     @IBAction func SaveButton(_ sender: Any) {
         
         emailField.text = email
         mobileNumberField.text = phoneNum
-
-            performSegue(withIdentifier: "unwindToProfile", sender: self)
+        
+        performSegue(withIdentifier: "unwindToProfile", sender: self)
         
         
         
@@ -45,14 +45,14 @@ class EditProfileViewController: UIViewController {
         
         
     }
-  
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         mobileNumberField.resignFirstResponder()
         emailField.resignFirstResponder()
     }
     
     
-
+    
 }
 
 extension EditProfileViewController: UITextFieldDelegate {
