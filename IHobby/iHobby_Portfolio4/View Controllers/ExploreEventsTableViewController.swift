@@ -10,13 +10,18 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class ExploreEventsTableViewController: UITableViewController, UISearchBarDelegate {
+// globbal array
+    var filteredEvents = [CreateEvent]()
+
+class ExploreEventsTableViewController: UITableViewController, UISearchBarDelegate,  UISearchResultsUpdating, UISearchControllerDelegate, UINavigationControllerDelegate{
+  
+    
     
     @IBOutlet weak var searchBar: UISearchBar!
-    
+    var searchController = UISearchController(searchResultsController: nil)
     var isSearching = false
     
-    var filteredEvents = [CreateEvent]()
+
     // reference to the databse
     var ref: DatabaseReference!
     var refHandle: DatabaseHandle?
@@ -41,12 +46,26 @@ class ExploreEventsTableViewController: UITableViewController, UISearchBarDelega
         GetFirebaseData()
         
         // search bar
-        searchBar.delegate = self
         
-        searchBar.returnKeyType = UIReturnKeyType.done
+        // setup search controller
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.definesPresentationContext = true
+        searchController.hidesNavigationBarDuringPresentation = false
         
-        searchBarTextDidEndEditing(searchBar)
-        // searchBarO()
+        // to recieve updates to searches here in this tableviewcontroller
+        searchController.searchResultsUpdater = self
+        
+        // setup SearchBar of the search conroller
+       searchController.searchBar.scopeButtonTitles = ["All", "Title", "Location"]
+        searchController.searchBar.delegate = self
+        
+        // Add the search bar to the table view as a header
+        tableView.tableHeaderView = searchController.searchBar
+        
+        // since we reloaded the searchbar we need to make sure that it is sized correctly
+        searchController.searchBar.sizeToFit()
+        
+        filteredEvents = eventList
     }
     
     // custom function to fetch data
@@ -94,7 +113,7 @@ class ExploreEventsTableViewController: UITableViewController, UISearchBarDelega
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
+        return 120
     }
     
     
@@ -116,89 +135,52 @@ class ExploreEventsTableViewController: UITableViewController, UISearchBarDelega
         
         return cell
     }
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        filteredEvents = eventList
+        searchController.isActive = false
+    }
+    
+    
+    func updateSearchResults(for searchController: UISearchController) {
         
-        searchBar.resignFirstResponder()
-        if searchBar.text != ""
-        {
-            searchText = searchBar.text!
+        // get the text our user wants to search for
+        let searchText = searchController.searchBar.text
+        
+        // get the scope title that the user has selected
+        let selectedScope = searchController.searchBar.selectedScopeButtonIndex
+       let allScopeTitles = searchController.searchBar.scopeButtonTitles!
+        let scopeTitle = allScopeTitles[selectedScope]
+        
+        
+        // dump our full data set into the array we will use for filtering
+        filteredEvents = eventList
+        
+        // if the user typed anything into the search field, filtered based on that entry
+        if searchText != ""{
+            
+            filteredEvents = filteredEvents.filter({ (title) -> Bool in
+                return title.eventTitle?.lowercased().range(of: searchText!.lowercased()) != nil
+            })
         }
-        
-        searchBarTextDidEndEditing(searchBar)
+        // then filter again based on scope
+        if scopeTitle != "All"{
+            filteredEvents = filteredEvents.filter({
+                
+                // here we use $0 to represent the current element instead of naming the parameter
+                $0.eventTitle?.range(of: scopeTitle) != nil
+            })
+        }
         tableView.reloadData()
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        if searchBar.text == nil || searchBar.text == ""{
-            isSearching = false
-            
-            view.endEditing(true)
-            
-            tableView.reloadData()
-            
-            
-        }else{
-            isSearching = true
-            let searchString = searchText.trimWhiteSpace()
-            if searchString != "", searchString.count > 0 {
-                let filterData = eventList.filter {
-                    return $0.id?.range(of: searchString, options: .caseInsensitive) != nil
-                }
-            }
-            tableView.reloadData()
-        }
-        
+    // this delegate methid is called when the user chages the scope since they handled that in our implementation of the updateSearchResults we can just call that method here and let it take care of everything
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        updateSearchResults(for: searchController)
     }
     
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }    
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-}
-extension String {
-    func trimWhiteSpace() -> String {
-        let string = self.trimmingCharacters(in: .whitespacesAndNewlines)
-        return string
+    override func viewDidLayoutSubviews() {
+        self.searchController.searchBar.sizeToFit()
     }
+    
 }

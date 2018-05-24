@@ -11,10 +11,11 @@ import UIKit
 // verify user by uploading their ID
 class VerificationViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    var colorForButtonBackground: UIColor = UIColor.green
     // let pro = ProfileViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // performSegue(withIdentifier: "GreenVerify", sender: self)
+       //performSegue(withIdentifier: "GreenVerify", sender: self)
         
         // Do any additional setup after loading the view.
     }
@@ -34,23 +35,36 @@ class VerificationViewController: UIViewController, UINavigationControllerDelega
     
     @IBAction func VerifyButton(_ sender: Any) {
         if IDImaageView?.image != nil {
-            performSegue(withIdentifier: "verToPro", sender: self)
-            
+           
+         performSegue(withIdentifier: "verToPro", sender: self)
             func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-                let pro = segue.destination as? ProfileViewController
-                pro?.verifyButton?.backgroundColor? = UIColor.green
-                if IDImaageView?.image != nil{
-                    pro?.verifyButton?.backgroundColor = UIColor.green
-                }else{
-                    pro?.verifyButton?.backgroundColor = UIColor.red
-                }
+            let pro = segue.destination as? ProfileViewController
+            pro?.verifyButton?.backgroundColor? = UIColor.green
+            }}else
+            {
+                    self.showAlert((Any).self)
             }
             
-        }else{
-            
-            showAlert((Any).self)
-        }
+        
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let pro = segue.destination as? ProfileViewController
+        pro?.verifyButton?.backgroundColor? = UIColor.green
+        pro?.verifyButton?.setTitle("VERIFIED", for: .normal)
+        
+    }
+    
+    /*
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ let pro = segue.destination as? ProfileViewController
+ //pro?.verifyButton?.backgroundColor? = UIColor.green
+ if IDImaageView?.image != nil{
+ pro?.verifyButton?.backgroundColor = UIColor.green
+ }else{
+ pro?.verifyButton?.backgroundColor = UIColor.red
+ }
+ }
+ */
     
     func showAlert(_ sender: Any) {
         let alertController = UIAlertController(title: "Attention", message:
@@ -72,18 +86,5 @@ class VerificationViewController: UIViewController, UINavigationControllerDelega
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

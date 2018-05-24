@@ -11,10 +11,12 @@ import UIKit
 class EventCell: UITableViewCell {
     
     // outlets for my cell labels and views
-    @IBOutlet weak var eventImage: UIImageView!
+
     @IBOutlet weak var eventTitle: UILabel!
     @IBOutlet weak var eventTime: UILabel!
     @IBOutlet weak var eventDate: UILabel!
+    @IBOutlet weak var eventLocation: UILabel!
+    @IBOutlet weak var eventDescription: UITextView!
     
     
     override func awakeFromNib() {

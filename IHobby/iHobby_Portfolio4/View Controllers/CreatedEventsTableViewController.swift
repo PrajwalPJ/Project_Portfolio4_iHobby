@@ -14,6 +14,7 @@ class CreatedEventsTableViewController: UITableViewController {
     
     // variables and outlets we need to use later
     var createTheEvent: [CreateEvent] = []
+        var eventList: [CreateEvent] = []
     var eventData = [String]()
     var myString1 = String()
     var myString2 = String()
@@ -32,7 +33,7 @@ class CreatedEventsTableViewController: UITableViewController {
         
         navigationItem.rightBarButtonItem = editButtonItem
         GetFirebaseData()
-        databaseWork()
+        //databaseWork()
         
     }
     
@@ -49,8 +50,10 @@ class CreatedEventsTableViewController: UITableViewController {
             let title = event?["Title"] as? String ?? ""
             let date = event?["Date"] as? String ?? ""
             let time = event?["Time"] as? String ?? ""
+            let location = event?["Location"] as? String ?? ""
+            let description = event?["Description"] as? String ?? ""
             
-            //self.eventList.append(CreateEvent(ieventTitle: title, ieventTime: time, ieventLocation: "", ieventDescription: "", ieventDate: date, initId: ""))
+            self.eventList.append(CreateEvent(ieventTitle: title, ieventTime: time, ieventLocation: location, ieventDescription: description, ieventDate: date, initId: ""))
             // reload tableview
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -78,7 +81,7 @@ class CreatedEventsTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete{
-            createTheEvent.remove(at: indexPath.row)
+           // createTheEvent.remove(at: indexPath.row)
             tableview.reloadData()
         }
     }
@@ -149,7 +152,7 @@ class CreatedEventsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return createTheEvent.count
+        return eventList.count
     }
     
     // set cell height
@@ -165,11 +168,12 @@ class CreatedEventsTableViewController: UITableViewController {
                 return tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath)
         }
         
-        //cell.eventTitle.text = createTheEvent[indexPath.row].eventTitle
         // Configure the cell...
-        cell.eventTitle.text = myString1
-        cell.eventTime.text = myString2
-        cell.eventDate.text = myString3
+        cell.eventTitle.text = eventList[indexPath.row].eventTitle
+        cell.eventTime.text = eventList[indexPath.row].eventTime
+        cell.eventDate.text = eventList[indexPath.row].eventDate
+        cell.eventLocation.text = eventList[indexPath.row].eventLocation
+        cell.eventDescription.text = eventList[indexPath.row].eventDescription
         
         return cell
     }

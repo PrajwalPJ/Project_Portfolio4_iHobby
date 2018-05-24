@@ -117,7 +117,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         
         self.present(alertController, animated: true, completion: nil)
     }
-    /*
+    
      // Hide keyboard when clicked outside
      override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
      self.view.endEditing(true)
@@ -129,7 +129,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
      return true
      }
      
-     */
+     
     
     
     

@@ -15,7 +15,7 @@ import FirebaseAuth
 var global_UserID:String? //using a global uid to help me search through my database
 // Profile Page Controller
 class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
-    
+       
     var userIDTest: [Attendees] = []
     var ver:VerificationViewController?
     // create the outlets for the labels
@@ -34,7 +34,8 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
         // making my UIImage a circle for asthetics
         image?.layer.cornerRadius = (image?.frame.size.width)!/2
         image?.clipsToBounds = true
-        verifyButton?.backgroundColor = UIColor.red
+        verifyButton?.backgroundColor? = UIColor.red
+        verifyButton?.setTitle("NOT VERIFIED", for: .normal)
         
         // calling my function that get user details from facebook SDK
         getFacebookUserInfo()
@@ -51,7 +52,7 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     // Verify Button
     @IBAction func VerificationButton(_ sender: Any) {
-    }
+        performSegue(withIdentifier: "GreenVerify", sender: self)    }
 
     
     
