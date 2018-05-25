@@ -28,7 +28,9 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     
     var pulledUserId = UserDefaults.standard
     
-    var myUniqueId: String = ""
+    var uniqueID: DatabaseReference?
+    
+    var UserId: DatabaseReference?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +68,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         ref = Database.database().reference()
         
         // create an unique ID to store each event in the database
-        let uniqueID = ref?.child("Event").childByAutoId()
+        uniqueID = ref?.child("Event").childByAutoId()
         //.childByAutoId()
         // make sure nothing is nil and then set values
         if nameTextField.text != "" {
@@ -84,7 +86,9 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         if timeTextField.text != "" {
             uniqueID?.child("Time").setValue(timeTextField.text)
         }
-        uniqueID?.child("UniqueID")
+        uniqueID?.child("uniqueID").setValue(uniqueID?.key)
+        
+     
         
         guard let uid = Auth.auth().currentUser?.uid else {
             return
@@ -92,9 +96,12 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         
         print(uid)
         
-        uniqueID?.child("uid").setValue(uid)
         
-        createAnEvent.append(CreateEvent(ieventTitle: nameTextField.text, ieventTime: timeTextField.text, ieventLocation: locTextField.text, ieventDescription: descTextField.text, ieventDate: dateTextField.text, initId: myUniqueId))
+        uniqueID?.child("userId").setValue(uid)
+        
+        //uniqueID?.child("uniqueID").setValue(uniqueID?.key)
+        
+        createAnEvent.append(CreateEvent(ieventTitle: nameTextField.text, ieventTime: timeTextField.text, ieventLocation: locTextField.text, ieventDescription: descTextField.text, ieventDate: dateTextField.text, initId: uniqueID?.key, initUserId: UserId?.key))
         // perform segue to pass data between controllers
         performSegue(withIdentifier: "CreateToView", sender: self)
     }

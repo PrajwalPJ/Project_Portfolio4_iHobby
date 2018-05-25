@@ -15,6 +15,7 @@ class CreateEvent: NSObject{
     var eventDescription: String?
     var eventDate: String?
     var id: String?
+    var userId: String?
     
     override init(){
         eventTitle = " "
@@ -23,15 +24,17 @@ class CreateEvent: NSObject{
         eventDescription = ""
         eventLocation = ""
         id = ""
+        userId = ""
     }
     
-    init(ieventTitle: String?, ieventTime: String?, ieventLocation: String?, ieventDescription: String?, ieventDate: String?, initId: String?) {
+    init(ieventTitle: String?, ieventTime: String?, ieventLocation: String?, ieventDescription: String?, ieventDate: String?, initId: String?, initUserId: String?) {
         self.eventDate = ieventDate
         self.eventTitle = ieventTitle
         self.eventTime = ieventTime
         self.eventLocation = ieventLocation
         self.eventDescription = ieventDescription
         self.id = initId
+        self.userId = initUserId
         
     }
     

@@ -35,6 +35,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginButton.readPermissions = ["email", "public_profile"]
         // Call the function we created to pull data from facebook SDK
         getFacebookUserInfo()
+        
+        
     }
     
     // logout button

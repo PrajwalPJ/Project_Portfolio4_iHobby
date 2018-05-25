@@ -53,7 +53,9 @@ class CreatedEventsTableViewController: UITableViewController {
             let location = event?["Location"] as? String ?? ""
             let description = event?["Description"] as? String ?? ""
             
-            self.eventList.append(CreateEvent(ieventTitle: title, ieventTime: time, ieventLocation: location, ieventDescription: description, ieventDate: date, initId: ""))
+            self.eventList.append(CreateEvent(ieventTitle: title, ieventTime: time, ieventLocation: location, ieventDescription: description, ieventDate: date, initId: self.ref?.key, initUserId: self.ref?.key))
+            
+           
             // reload tableview
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -64,24 +66,19 @@ class CreatedEventsTableViewController: UITableViewController {
             print(error.localizedDescription)
         }
     }
-    
-    // Delete button functionality
-    @IBAction func DeleteEventButton(_ sender: Any) {
-        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-            if editingStyle == .delete {
-                print("Deleted")
-                
-                self.tableview.deleteRows(at: [indexPath], with: .fade)
-                //remove(at: indexPath.row)
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
-                
-                
-            }}
-        
-    }
+
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete{
            // createTheEvent.remove(at: indexPath.row)
+            var eventId = eventList[indexPath.row].id
+            
+            var eventRef = Database.database().reference().child("Event").child(eventId!)
+            eventRef.removeValue()
+            
+            eventList.remove(at: indexPath.row)
+            self.tableview.deleteRows(at: [indexPath], with: .fade)
+            
+           
             tableview.reloadData()
         }
     }
@@ -91,57 +88,7 @@ class CreatedEventsTableViewController: UITableViewController {
         // presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
-    // custom function to get database connection and pull and request data from the database
-    func databaseWork(){
-        // set the firebase reference
-        ref = Database.database().reference()
-        
-        // testing again to read data
-        ref?.observe(DataEventType.childAdded, with: {(snapshot) in
-            
-            if snapshot.childrenCount > 0{
-                self.createTheEvent.removeAll()
-                
-                for event in snapshot.children.allObjects as![DataSnapshot]{
-                    let eventObject = event.value as? [String: AnyObject]
-                    let eventTitle = eventObject?["Title"]
-                    let eventDescription = eventObject?["Description"]
-                    let eventLocation = eventObject?["Location"]
-                    let eventDate = eventObject?["Date"]
-                    let eventTime = eventObject?["Time"]
-                    let eventId = eventObject?["uniqueID"]
-                    
-                    // call our data model
-                    let event = CreateEvent(ieventTitle: eventTitle as! String?, ieventTime: eventTime as! String?, ieventLocation: eventLocation as! String?, ieventDescription: eventDescription as! String?, ieventDate: eventDate as! String?, initId: eventId as! String?)
-                    
-                    self.createTheEvent.append(event)                }
-            }
-            self.tableView.reloadData()
-        })
-        // retrieve the events and listen for changes
-        databaseHandle = ref?.child("Event").observe(.childAdded, with: { (snapshot) in
-            
-            // code that executes when a child is added to "Event"
-            // Take the value from snapshot and add it to EventData array
-            // try to convert value of data to string
-            let event = snapshot.value as? String
-            
-            if let actualEvent = event{
-                // append data to to eventData array
-                self.eventData.append(actualEvent)
-                // reload the table view
-                
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-                //self.performSegue(withIdentifier: "CreateToView", sender: self)
-                
-                print(self.eventData)
-            }
-            
-        })
-    }
-    
+   
     
     
     // MARK: - Table view data source
@@ -157,7 +104,7 @@ class CreatedEventsTableViewController: UITableViewController {
     
     // set cell height
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
+        return 120
     }
     
     // assign cell components with correct identifier
@@ -167,7 +114,7 @@ class CreatedEventsTableViewController: UITableViewController {
             else{
                 return tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath)
         }
-        
+        //print(eventList[indexPath.row].id)
         // Configure the cell...
         cell.eventTitle.text = eventList[indexPath.row].eventTitle
         cell.eventTime.text = eventList[indexPath.row].eventTime
