@@ -54,8 +54,6 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBAction func VerificationButton(_ sender: Any) {
         performSegue(withIdentifier: "GreenVerify", sender: self)    }
 
-    
-    
  
     // Custom function to get data
   func getFacebookUserInfo() {

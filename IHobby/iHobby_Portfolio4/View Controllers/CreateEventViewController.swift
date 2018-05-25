@@ -27,9 +27,9 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var timeTextField: UITextField!
     
     var pulledUserId = UserDefaults.standard
-    
+    // for unique event id
     var uniqueID: DatabaseReference?
-    
+    // for user id
     var UserId: DatabaseReference?
     
     override func viewDidLoad() {
@@ -44,23 +44,20 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     // user will be able to create a custom event
     @IBAction func CreateButton(_ sender: Any) {
         
-        if nameTextField.text == nil{
+        if nameTextField.text == ""{
             showAlert((Any).self)
-        }else if descTextField.text == nil{
+        }else if descTextField.text == ""{
             showAlert((Any).self)
-        }else if locTextField.text == nil{
+        }else if locTextField.text == ""{
             showAlert((Any).self)
-        }else if dateTextField.text == nil{
+        }else if dateTextField.text == ""{
             showAlert((Any).self)
-        }else if timeTextField.text == nil{
+        }else if timeTextField.text == ""{
             showAlert((Any).self)
         }else{
+            // store function
             storeToDatabase()
         }
-        
-        
-        
-        
     }
     
     func storeToDatabase(){
@@ -69,7 +66,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         
         // create an unique ID to store each event in the database
         uniqueID = ref?.child("Event").childByAutoId()
-        //.childByAutoId()
+       
         // make sure nothing is nil and then set values
         if nameTextField.text != "" {
             uniqueID?.child("Title").setValue(nameTextField.text)
@@ -89,22 +86,19 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         uniqueID?.child("uniqueID").setValue(uniqueID?.key)
         
      
-        
+        // get user uid
         guard let uid = Auth.auth().currentUser?.uid else {
             return
         }
-        
-        print(uid)
-        
-        
+      
         uniqueID?.child("userId").setValue(uid)
-        
-        //uniqueID?.child("uniqueID").setValue(uniqueID?.key)
-        
+   
         createAnEvent.append(CreateEvent(ieventTitle: nameTextField.text, ieventTime: timeTextField.text, ieventLocation: locTextField.text, ieventDescription: descTextField.text, ieventDate: dateTextField.text, initId: uniqueID?.key, initUserId: UserId?.key))
+        
         // perform segue to pass data between controllers
         performSegue(withIdentifier: "CreateToView", sender: self)
     }
+    
     //pass data that need to be passed from one controller to the other
     // Segue from Create to Created
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -114,9 +108,9 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         secController?.myString2 = timeTextField.text!
         secController?.myString3 = dateTextField.text!
         
-        
     }
     
+    // show pop up alert
     func showAlert(_ sender: Any) {
         let alertController = UIAlertController(title: "Attention", message:
             "Please do not leave any fields blank.", preferredStyle: UIAlertControllerStyle.alert)
@@ -135,29 +129,5 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
      timeTextField.resignFirstResponder()
      return true
      }
-     
-     
-    
-    
-    
-    
-    
-    
-    /*
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     if let dvc = segue.destination as? CreatedEventsTableViewController {
-     dvc.eventData[0] = createAnEvent[tableView.indexPathForSelectedRow!.row]
-     }
-     }
-     */
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

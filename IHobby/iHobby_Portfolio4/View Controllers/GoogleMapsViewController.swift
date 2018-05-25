@@ -28,13 +28,10 @@ class GoogleMapsViewController: UIViewController, CLLocationManagerDelegate, UIS
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         // get the most recent position of the user
-        //let location = locations[0]
         // zoom in the map on that location
         let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
         var coordinate = CLLocationCoordinate2D(latitude: 28.5966, longitude: 81.3013)
         // location of the user
-        //let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        // set the region
         let region = MKCoordinateRegion(center: coordinate, span: span)
         // set the map region
         map.setRegion(region, animated: true)

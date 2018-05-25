@@ -12,12 +12,10 @@ import UIKit
 class VerificationViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     var colorForButtonBackground: UIColor = UIColor.green
-    // let pro = ProfileViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       //performSegue(withIdentifier: "GreenVerify", sender: self)
-        
-        // Do any additional setup after loading the view.
+
     }
     
     // outlets and ibactions
@@ -44,9 +42,8 @@ class VerificationViewController: UIViewController, UINavigationControllerDelega
             {
                     self.showAlert((Any).self)
             }
-            
-        
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let pro = segue.destination as? ProfileViewController
         pro?.verifyButton?.backgroundColor? = UIColor.green
@@ -54,18 +51,8 @@ class VerificationViewController: UIViewController, UINavigationControllerDelega
         
     }
     
-    /*
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- let pro = segue.destination as? ProfileViewController
- //pro?.verifyButton?.backgroundColor? = UIColor.green
- if IDImaageView?.image != nil{
- pro?.verifyButton?.backgroundColor = UIColor.green
- }else{
- pro?.verifyButton?.backgroundColor = UIColor.red
- }
- }
- */
-    
+
+    // pop up alert function
     func showAlert(_ sender: Any) {
         let alertController = UIAlertController(title: "Attention", message:
             "Please Upload an ID to verify account!", preferredStyle: UIAlertControllerStyle.alert)
@@ -74,6 +61,7 @@ class VerificationViewController: UIViewController, UINavigationControllerDelega
         self.present(alertController, animated: true, completion: nil)
     }
     
+    // pick an image to upload
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             IDImaageView?.image = image
@@ -81,10 +69,6 @@ class VerificationViewController: UIViewController, UINavigationControllerDelega
             
         }
         self.dismiss(animated: true, completion: nil)
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }

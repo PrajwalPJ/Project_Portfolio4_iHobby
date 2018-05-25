@@ -11,19 +11,15 @@ import Firebase
 import FirebaseDatabase
 
 // globbal array
-    var filteredEvents = [CreateEvent]()
-
+var filteredEvents = [CreateEvent]()
+var isFiltering =  false
 
 class ExploreEventsTableViewController: UITableViewController, UISearchBarDelegate,  UISearchResultsUpdating, UISearchControllerDelegate, UINavigationControllerDelegate{
-  
-    var searchController = UISearchController()
-    var resultsController = UITableViewController()
     
-
+    // variables and outlets
+    var searchController = UISearchController()
     @IBOutlet weak var searchBar: UISearchBar!
     var isSearching = false
-    
-
     // reference to the databse
     var ref: DatabaseReference!
     var refHandle: DatabaseHandle?
@@ -37,27 +33,16 @@ class ExploreEventsTableViewController: UITableViewController, UISearchBarDelega
         searchController = UISearchController(searchResultsController: nil)
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchResultsUpdater = self
+        tableView.delegate = self
+        tableView.dataSource = self
+        searchBar.delegate = self
         
-        
-        resultsController.tableView.delegate = self
-        resultsController.tableView.dataSource = self
-        
-        // Uncomment the following line to preserve selection between presentations
-        self.clearsSelectionOnViewWillAppear = false
- 
         // set the firebase reference
         ref = Database.database().reference()
         // call our fetch function
         GetFirebaseData()
         
-        searchBar.delegate = self
- 
-        self.extendedLayoutIncludesOpaqueBars = !(self.navigationController?.navigationBar.isTranslucent)!;
-        searchBar.isHidden = false
-        
- 
-       
-        print(eventList)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     // custom function to fetch data
@@ -74,14 +59,13 @@ class ExploreEventsTableViewController: UITableViewController, UISearchBarDelega
             let date = event?["Date"] as? String ?? ""
             let time = event?["Time"] as? String ?? ""
             
+            // add it to our data model
             self.eventList.append(CreateEvent(ieventTitle: title, ieventTime: time, ieventLocation: "", ieventDescription: "", ieventDate: date, initId: "", initUserId: ""))
             // reload tableview
             DispatchQueue.main.async {
                 filteredEvents = self.eventList
                 self.tableView.reloadData()
             }
-            
-            
         })
         { (error) in
             print(error.localizedDescription)
@@ -98,7 +82,7 @@ class ExploreEventsTableViewController: UITableViewController, UISearchBarDelega
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if tableView == resultsController.tableView{
+        if searchController.isActive {
             return filteredEvents.count
         }else{
             return eventList.count
@@ -117,49 +101,67 @@ class ExploreEventsTableViewController: UITableViewController, UISearchBarDelega
                 return tableView.dequeueReusableCell(withIdentifier: "ExploreCellID1", for: indexPath)
         }
         
-        if tableView == resultsController.tableView{
+        // chech if we are searching
+        if searchController.isActive {
             cell.textLabel?.text? = filteredEvents[indexPath.row].eventTitle!
         }else{
             cell.textLabel?.text? = eventList[indexPath.row].eventTitle!
         }
         var text = [CreateEvent].Element()
-        if isSearching{
-            text = filteredEvents[indexPath.row]
+        let event: CreateEvent
+        if searchController.isActive {
+            event = filteredEvents[indexPath.row]
+            
+        } else {
+            event = eventList[indexPath.row]
         }
+        
         // Configure the cell...
         cell.exploreTitle.text = filteredEvents[indexPath.row].eventTitle
         cell.exploreTime.text = filteredEvents[indexPath.row].eventTime
         cell.exploreDate.text = filteredEvents[indexPath.row].eventDate
         
-        
-        let event: CreateEvent
-        if isFiltering() {
-            event = filteredEvents[indexPath.row]
-        } else {
-            event = eventList[indexPath.row]
-        }
-       
-  
-        
         return cell
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        filteredEvents = eventList
-        searchController.isActive = false
-    }
+    // when the click happens stop editing
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        searchBar.resignFirstResponder()
-       
+        view.endEditing(true)
+    }
+    
+    // when text changes it affects it
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == nil || searchBar.text == "" {
+            isFiltering = false
+            tableView.reloadData()
+            view.endEditing(true)
+        } else {
+            isFiltering = true
+            let lower = searchBar.text!
+            filteredEvents = eventList.filter({$0.eventTitle?.range(of: lower) != nil})
+            tableView.reloadData()
+        }
+    }
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text?.lowercased(){
+            if searchText.characters.count == 0{
+                filteredEvents = eventList
+            }else{
+                filteredEvents = eventList.filter{ return $0.eventTitle!.contains(searchText)
+                    var s = ""
+                }
+            }
+        }
         tableView.reloadData()
     }
     
-    func isFiltering() -> Bool {
-        return searchController.isActive && !searchBarIsEmpty()
+    func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        return searchController.searchBar.text?.isEmpty ?? true
     }
     
-    func updateSearchResults(for searchController: UISearchController) {
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        
         if let searchText = searchController.searchBar.text?.lowercased(){
             if searchText.characters.count == 0{
                 filteredEvents = eventList
@@ -168,35 +170,14 @@ class ExploreEventsTableViewController: UITableViewController, UISearchBarDelega
                 }
                 
             }
-           
+            tableView.reloadData()
         }
-        
-         resultsController.tableView.reloadData()
-
-        tableView.reloadData()
     }
-    
-    
-    func searchBarIsEmpty() -> Bool {
-        // Returns true if the text is empty or nil
-        return searchController.searchBar.text?.isEmpty ?? true
-    }
-    
-    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-        filteredEvents = eventList.filter({( event : CreateEvent) -> Bool in
-            return (event.eventTitle?.lowercased().contains(searchText.lowercased()))!
-        })
-        
-        tableView.reloadData()
-    }
-    
     
     // this delegate methid is called when the user chages the scope since they handled that in our implementation of the updateSearchResults we can just call that method here and let it take care of everything
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         updateSearchResults(for: searchController)
     }
-    
-  
     
 }
 
